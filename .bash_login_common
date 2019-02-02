@@ -1,9 +1,16 @@
+OS_LOWER=$(uname -s | tr "[[:upper:]]" "[[:lower:]]")
 for GIT_DIR in "$HOME/nfs/git" "$HOME/git"; do
-	if [ -d "$GIT_DIR" ]; then
-		SCRATCH="$GIT_DIR/scratch"
-		PROFILES_DIR="$SCRATCH/profiles/${HOSTNAME%.*}"
-		export PATH="$PATH:$PROFILES_DIR/root/bin:$PROFILES_DIR/home/$LOGNAME/bin"
+	if [ ! -d "$GIT_DIR" ]; then
+		continue
 	fi
+	SCRATCH="$GIT_DIR/scratch"
+	for PROFILE_NAME in ${HOSTNAME%.*} "base/$OS_LOWER"; do
+		PROFILES_DIR="$SCRATCH/profiles/$PROFILE_NAME"
+		if [ ! -d "$PROFILES_DIR" ]; then
+			continue
+		fi
+		export PATH="$PATH:$PROFILES_DIR/root/bin:$PROFILES_DIR/home/$LOGNAME/bin"
+	done
 done
 
 export EDITOR=vim
