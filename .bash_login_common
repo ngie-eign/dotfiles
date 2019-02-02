@@ -1,0 +1,20 @@
+for GIT_DIR in "$HOME/nfs/git" "$HOME/git"; do
+	if [ -d "$GIT_DIR" ]; then
+		SCRATCH="$GIT_DIR/scratch"
+		PROFILES_DIR="$SCRATCH/profiles/${HOSTNAME%.*}"
+		export PATH="$PATH:$PROFILES_DIR/root/bin:$PROFILES_DIR/home/$LOGNAME/bin"
+	fi
+done
+
+export EDITOR=vim
+export LC_COLLATE="C"
+export CHARSET="UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+: ${TMPDIR=/tmp}
+ssh_env_file="$TMPDIR/ssh-agent-env.$LOGNAME"
+if [ -e "$ssh_env_file" ]; then
+	. "$ssh_env_file"
+fi
+
+# vim: syntax=sh
