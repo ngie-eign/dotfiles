@@ -83,6 +83,8 @@ set fileencodings+=default
 " {{{ Syntax highlighting settings
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
+filetype plugin indent on
+
 if &t_Co > 1
   syntax on
   syntax enable
@@ -108,19 +110,6 @@ if &term ==? "xterm"
 endif
 " }}}
 
-" {{{ Filetype plugin settings
-" Enable plugin-provided filetype settings, but only if the ftplugin
-" directory exists (which it won't on livecds, for example).
-if isdirectory(expand("$VIMRUNTIME/ftplugin"))
-  filetype plugin on
-
-  " Uncomment the next line (or copy to your ~/.vimrc) for plugin-provided
-  " indent settings. Some people don't like these, so we won't turn them on by
-  " default.
-  filetype indent on
-endif
-" }}}
-
 " {{{ Autocommands
 if has("autocmd")
 
@@ -136,7 +125,7 @@ endif
 nnoremap <c-w> :bp<cr>
 nnoremap <c-e> :bn<cr> 
 
-" mouse support annoys me ~ Ngie
+" mouse support annoys me - Enji
 set mouse=
 colorscheme tango
 
