@@ -1,3 +1,6 @@
+#!/bin/sh
+# The shebang forces the vim colorizer to treat this as a shell script.
+
 OS_LOWER=$(uname -s | tr "[[:upper:]]" "[[:lower:]]")
 for GIT_DIR in "$HOME/nfs/git" "$HOME/git"; do
 	if [ ! -d "$GIT_DIR" ]; then
@@ -11,6 +14,7 @@ for GIT_DIR in "$HOME/nfs/git" "$HOME/git"; do
 		fi
 		export PATH="$PATH:$PROFILES_DIR/root/bin:$PROFILES_DIR/home/$LOGNAME/bin"
 	done
+	break
 done
 
 export EDITOR=vim
@@ -23,5 +27,3 @@ ssh_env_file="$TMPDIR/ssh-agent-env.$LOGNAME"
 if [ -e "$ssh_env_file" ]; then
 	. "$ssh_env_file"
 fi
-
-# vim: syntax=sh
