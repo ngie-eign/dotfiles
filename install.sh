@@ -1,15 +1,15 @@
 #!/bin/sh
 
-for f in .*; do
-	case "$f" in
+for p in .*; do
+	case "$p" in
 	.|..|.git)
-		printf "Skipping $f\n"
+		printf "Skipping $p\n"
 		continue
 		;;
 	*)
-		printf "Installing $f to $HOME/$f\n"
-		#diff -Naur "$f" "$HOME/$f"
-		cp -Rf "$f" "$HOME/."
+		printf "Installing $p to $HOME/$p\n"
+		#diff -Naur "$p" "$HOME/$p"
+		cp -Rf "$p" "$HOME/."
 		;;
 	esac
 done
