@@ -1,5 +1,7 @@
 . "$HOME/.bash_login_common"
 
+BASH_SILENCE_DEPRECATION_WARNING=1
+
 export PATH="$PATH:$HOME/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$GIT_DIR/arcanist/bin/"
 
