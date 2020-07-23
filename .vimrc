@@ -122,10 +122,13 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 " }}}
 
+" ^e and ^w remaps for :bn/:bp.
 nnoremap <c-w> :bp<cr>
-nnoremap <c-e> :bn<cr> 
+nnoremap <c-e> :bn<cr>
 
-" mouse support annoys me - Enji
+" Try spellchecking.
+set spell spelllang=en_us
+" mouse support annoys me
 set mouse=
 colorscheme tango
 
