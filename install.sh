@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd "$(dirname "$0")"
 for p in .*; do
 	case "$p" in
 	.|..|.git)
